@@ -98,7 +98,7 @@ export function HeroSection({ onOpenReservation }: HeroSectionProps) {
       {/* Hero Visual Image Card with Scroll Parallax */}
       <motion.div
         style={{ scale: imageScale, opacity: imageOpacity, y: textY }}
-        className="w-full max-w-5xl h-[420px] sm:h-[520px] rounded-3xl overflow-hidden shadow-xl border border-[#E8E2D8] dark:border-[#2E2420] relative"
+        className="w-full max-w-5xl h-[420px] sm:h-[520px] rounded-3xl overflow-hidden shadow-xl border border-[#E8E2D8] dark:border-[#2E2420] relative will-change-transform"
         data-cursor="VIEW"
       >
         <img

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
     --bg-cream: #FDFBF7;
@@ -42,11 +44,12 @@
   --color-terracotta: var(--color-terracotta);
 }
 
-body {
+html, body {
   background-color: var(--bg-cream);
-  color: var(--color-espresso);
+  color: var(--text-primary);
   font-family: var(--font-sans);
   overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Subtle organic grain overlay */
@@ -54,18 +57,17 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
 }
 
-/* Custom serene scrollbar */
+/* Hardware accelerated smooth scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F5EFE6;
+  background: var(--bg-oat);
 }
 ::-webkit-scrollbar-thumb {
-  background: #C4A484;
+  background: var(--color-mocha);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #8F9E8B;
+  background: var(--color-sage);
 }
-

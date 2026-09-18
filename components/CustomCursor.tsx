@@ -8,6 +8,8 @@ export function CustomCursor() {
   const [isHovered, setIsHovered] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
+  const stateRef = useRef({ hovered: false, text: "" });
+
   useEffect(() => {
     // Disable on touch / mobile screens
     if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
@@ -29,21 +31,22 @@ export function CustomCursor() {
       const target = e.target as HTMLElement | null;
       const cursorTarget = target?.closest("[data-cursor]") as HTMLElement | null;
 
-      if (cursorTarget) {
-        const text = cursorTarget.getAttribute("data-cursor") || "";
-        setCursorText(text);
-        setIsHovered(true);
-      } else {
-        setIsHovered(false);
-        setCursorText("");
+      const newText = cursorTarget ? cursorTarget.getAttribute("data-cursor") || "" : "";
+      const newHovered = Boolean(cursorTarget);
+
+      // Only trigger React state update if the hover target actually changes
+      if (stateRef.current.hovered !== newHovered || stateRef.current.text !== newText) {
+        stateRef.current = { hovered: newHovered, text: newText };
+        setCursorText(newText);
+        setIsHovered(newHovered);
       }
     };
 
-    // Ultra-fast GPU-accelerated render loop for zero latency
+    // Ultra-fast 60-120fps GPU render loop
     const render = () => {
-      // Instant crisp response with 0.4 lerp for silky smooth tracking
-      currentX += (mouseX - currentX) * 0.45;
-      currentY += (mouseY - currentY) * 0.45;
+      // 0.85 lerp for near-instant 1:1 hardware precision with subtle smoothness
+      currentX += (mouseX - currentX) * 0.85;
+      currentY += (mouseY - currentY) * 0.85;
 
       if (cursorRef.current) {
         cursorRef.current.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;

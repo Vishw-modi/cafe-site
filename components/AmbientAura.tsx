@@ -1,72 +1,57 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, useSpring, useMotionValue } from "motion/react";
+import { useEffect, useRef } from "react";
 
 export function AmbientAura() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  // Smooth springs for gentle organic movement
-  const springX = useSpring(mouseX, { stiffness: 20, damping: 30 });
-  const springY = useSpring(mouseY, { stiffness: 20, damping: 30 });
-
-  const [touchRipples, setTouchRipples] = useState<{ id: number; x: number; y: number }[]>([]);
+  const auraRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let mouseX = -200;
+    let mouseY = -200;
+    let currentX = -200;
+    let currentY = -200;
+    let animationFrameId: number;
+
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX - 200);
-      mouseY.set(e.clientY - 200);
+      mouseX = e.clientX - 225;
+      mouseY = e.clientY - 225;
     };
 
-    const handleTouchStart = (e: TouchEvent) => {
-      if (e.touches.length > 0) {
-        const touch = e.touches[0];
-        mouseX.set(touch.clientX - 200);
-        mouseY.set(touch.clientY - 200);
+    // GPU-accelerated smooth lerp animation loop (zero React state updates)
+    const render = () => {
+      currentX += (mouseX - currentX) * 0.05; // Gentle organic inertia
+      currentY += (mouseY - currentY) * 0.05;
 
-        const newRipple = { id: Date.now(), x: touch.clientX, y: touch.clientY };
-        setTouchRipples((prev) => [...prev.slice(-2), newRipple]);
+      if (auraRef.current) {
+        auraRef.current.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
       }
+
+      animationFrameId = requestAnimationFrame(render);
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    animationFrameId = requestAnimationFrame(render);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("touchstart", handleTouchStart);
+      cancelAnimationFrame(animationFrameId);
     };
-  }, [mouseX, mouseY]);
+  }, []);
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
-      {/* Soft warm ambient blur aura */}
-      <motion.div
+      {/* GPU-accelerated smooth ambient glow aura */}
+      <div
+        ref={auraRef}
+        className="absolute w-[450px] h-[450px] rounded-full opacity-60 dark:opacity-40 will-change-transform"
         style={{
-          x: springX,
-          y: springY,
+          background:
+            "radial-gradient(circle, rgba(245,239,230,0.8) 0%, rgba(232,226,216,0.4) 45%, rgba(0,0,0,0) 70%)",
         }}
-        className="absolute w-[450px] h-[450px] rounded-full bg-radial from-[#F5EFE6]/60 dark:from-[#2B221E]/60 via-[#E8E2D8]/30 dark:via-[#1E1815]/30 to-transparent blur-3xl opacity-70"
       />
 
-      {/* Touch Ripples for Mobile */}
-      {touchRipples.map((ripple) => (
-        <motion.div
-          key={ripple.id}
-          initial={{ opacity: 0.4, scale: 0.2 }}
-          animate={{ opacity: 0, scale: 2.2 }}
-          transition={{ duration: 1.8, ease: "easeOut" }}
-          style={{
-            left: ripple.x - 100,
-            top: ripple.y - 100,
-          }}
-          className="absolute w-[200px] h-[200px] rounded-full bg-[#8F9E8B]/15 blur-2xl"
-        />
-      ))}
-
       {/* Organic Subtle Grain Texture */}
-      <div className="absolute inset-0 bg-grain opacity-40 mix-blend-multiply" />
+      <div className="absolute inset-0 bg-grain opacity-30 mix-blend-multiply" />
     </div>
   );
 }
