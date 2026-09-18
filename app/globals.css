@@ -9,6 +9,24 @@
     --color-mocha: #C4A484;
     --color-espresso: #2C221E;
     --color-terracotta: #C86D51;
+    --card-bg: #FDFBF7;
+    --card-border: #E8E2D8;
+    --text-primary: #2C221E;
+    --text-muted: rgba(44, 34, 30, 0.75);
+  }
+
+  .dark {
+    --bg-cream: #14100E;
+    --bg-oat: #1E1815;
+    --bg-linen: #2B221E;
+    --color-sage: #A1B39C;
+    --color-mocha: #D6B798;
+    --color-espresso: #F5EFE6;
+    --color-terracotta: #E08569;
+    --card-bg: #1B1513;
+    --card-border: #2E2420;
+    --text-primary: #F5EFE6;
+    --text-muted: rgba(245, 239, 230, 0.75);
   }
 }
 

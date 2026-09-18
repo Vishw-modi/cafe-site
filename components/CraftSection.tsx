@@ -6,17 +6,17 @@ import { Sparkles, Droplets, Flame } from "lucide-react";
 
 export function CraftSection() {
   return (
-    <section id="craft" className="py-24 px-6 bg-[#F5EFE6]/60 border-y border-[#E8E2D8]">
+    <section id="craft" className="py-24 px-6 bg-[#F5EFE6]/60 dark:bg-[#1E1815]/60 border-y border-[#E8E2D8] dark:border-[#2E2420]">
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="block text-xs uppercase tracking-[0.25em] text-[#8F9E8B] font-medium mb-3">
+          <span className="block text-xs uppercase tracking-[0.25em] text-[#8F9E8B] dark:text-[#A1B39C] font-medium mb-3">
             Our Philosophy
           </span>
-          <h2 className="font-serif text-3xl sm:text-5xl text-[#2C221E] font-light leading-tight mb-4">
+          <h2 className="font-serif text-3xl sm:text-5xl text-[#2C221E] dark:text-[#F5EFE6] font-light leading-tight mb-4">
             The Craft
           </h2>
-          <p className="font-serif italic text-lg sm:text-xl text-[#2C221E]/75">
+          <p className="font-serif italic text-lg sm:text-xl text-[#2C221E]/75 dark:text-[#F5EFE6]/75">
             "Every cup begins long before it reaches the table."
           </p>
         </div>
@@ -29,16 +29,17 @@ export function CraftSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="relative h-[400px] rounded-3xl overflow-hidden shadow-lg border border-[#E8E2D8] group"
+            className="relative h-[400px] rounded-3xl overflow-hidden shadow-lg border border-[#E8E2D8] dark:border-[#2E2420] group"
+            data-cursor="VIEW"
           >
             <img
               src={CRAFT_STORIES[0].imageUrl}
               alt="Espresso Extraction Craft"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#2C221E]/80 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#2C221E]/80 dark:from-[#14100E]/90 via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 text-[#FDFBF7]">
-              <span className="text-xs uppercase tracking-widest text-[#C4A484] font-medium block mb-1">
+              <span className="text-xs uppercase tracking-widest text-[#C4A484] dark:text-[#D6B798] font-medium block mb-1">
                 Extraction Ritual
               </span>
               <h3 className="font-serif text-2xl font-normal mb-2">{CRAFT_STORIES[0].title}</h3>
@@ -57,36 +58,36 @@ export function CraftSection() {
             className="space-y-6 px-2"
           >
             <div className="flex items-start gap-4">
-              <div className="p-3 rounded-full bg-[#E8E2D8]/60 text-[#2C221E]">
-                <Droplets className="w-5 h-5" />
+              <div className="p-3 rounded-full bg-[#E8E2D8]/60 dark:bg-[#2B221E] text-[#2C221E] dark:text-[#F5EFE6]">
+                <Droplets className="w-5 h-5 text-[#8F9E8B] dark:text-[#A1B39C]" />
               </div>
               <div>
-                <h4 className="font-serif text-lg text-[#2C221E] font-medium">Single Estate Harvest</h4>
-                <p className="text-sm text-[#2C221E]/70 font-sans mt-1">
+                <h4 className="font-serif text-lg text-[#2C221E] dark:text-[#F5EFE6] font-medium">Single Estate Harvest</h4>
+                <p className="text-sm text-[#2C221E]/70 dark:text-[#F5EFE6]/70 font-sans mt-1">
                   Grown at 2,100 meters elevation in organic soil, hand-picked at peak ripeness.
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="p-3 rounded-full bg-[#E8E2D8]/60 text-[#2C221E]">
-                <Flame className="w-5 h-5" />
+              <div className="p-3 rounded-full bg-[#E8E2D8]/60 dark:bg-[#2B221E] text-[#2C221E] dark:text-[#F5EFE6]">
+                <Flame className="w-5 h-5 text-[#C4A484] dark:text-[#D6B798]" />
               </div>
               <div>
-                <h4 className="font-serif text-lg text-[#2C221E] font-medium">Gentle Micro-Roasting</h4>
-                <p className="text-sm text-[#2C221E]/70 font-sans mt-1">
+                <h4 className="font-serif text-lg text-[#2C221E] dark:text-[#F5EFE6] font-medium">Gentle Micro-Roasting</h4>
+                <p className="text-sm text-[#2C221E]/70 dark:text-[#F5EFE6]/70 font-sans mt-1">
                   Small-batch roasted weekly to unlock delicate floral top notes and deep cacao undertones.
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="p-3 rounded-full bg-[#E8E2D8]/60 text-[#2C221E]">
-                <Sparkles className="w-5 h-5" />
+              <div className="p-3 rounded-full bg-[#E8E2D8]/60 dark:bg-[#2B221E] text-[#2C221E] dark:text-[#F5EFE6]">
+                <Sparkles className="w-5 h-5 text-[#8F9E8B] dark:text-[#A1B39C]" />
               </div>
               <div>
-                <h4 className="font-serif text-lg text-[#2C221E] font-medium">Mindful Pouring</h4>
-                <p className="text-sm text-[#2C221E]/70 font-sans mt-1">
+                <h4 className="font-serif text-lg text-[#2C221E] dark:text-[#F5EFE6] font-medium">Mindful Pouring</h4>
+                <p className="text-sm text-[#2C221E]/70 dark:text-[#F5EFE6]/70 font-sans mt-1">
                   Water filtered to precise mineral balance and heated to 93.5°C for zero bitterness.
                 </p>
               </div>
@@ -104,14 +105,14 @@ export function CraftSection() {
             transition={{ duration: 0.8 }}
             className="space-y-4 px-2 order-2 md:order-1"
           >
-            <span className="text-xs uppercase tracking-[0.2em] text-[#8F9E8B] font-medium block">
+            <span className="text-xs uppercase tracking-[0.2em] text-[#8F9E8B] dark:text-[#A1B39C] font-medium block">
               Bake House
             </span>
-            <h3 className="font-serif text-3xl text-[#2C221E] font-light">72-Hour Laminated Pastry</h3>
-            <p className="text-base text-[#2C221E]/75 leading-relaxed font-sans">
+            <h3 className="font-serif text-3xl text-[#2C221E] dark:text-[#F5EFE6] font-light">72-Hour Laminated Pastry</h3>
+            <p className="text-base text-[#2C221E]/75 dark:text-[#F5EFE6]/75 leading-relaxed font-sans">
               Our pastries are never rushed. We fold French Normandy butter into fermented sourdough dough over 72 slow hours, producing a crisp golden crunch that yields to a feather-light interior.
             </p>
-            <p className="font-serif italic text-sm text-[#C4A484]">
+            <p className="font-serif italic text-sm text-[#C4A484] dark:text-[#D6B798]">
               "Time is our secret ingredient."
             </p>
           </motion.div>
@@ -122,7 +123,8 @@ export function CraftSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative h-[380px] rounded-3xl overflow-hidden shadow-lg border border-[#E8E2D8] order-1 md:order-2 group"
+            className="relative h-[380px] rounded-3xl overflow-hidden shadow-lg border border-[#E8E2D8] dark:border-[#2E2420] order-1 md:order-2 group"
+            data-cursor="VIEW"
           >
             <img
               src={CRAFT_STORIES[1].imageUrl}
@@ -135,3 +137,4 @@ export function CraftSection() {
     </section>
   );
 }
+
