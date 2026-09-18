@@ -47,15 +47,15 @@ export function HeaderNav({ onOpenReservation }: HeaderNavProps) {
         </a>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-8 text-xs uppercase tracking-[0.2em] font-medium text-[#2C221E]/80 dark:text-[#F5EFE6]/80">
+        <nav className="hidden md:flex items-center gap-8 text-xs uppercase tracking-[0.2em] font-semibold text-[#2C221E] dark:text-[#F5EFE6]">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="relative py-1 hover:text-[#2C221E] dark:hover:text-white transition-colors group"
+              className="relative py-1 hover:text-[#C4A484] dark:hover:text-[#D6B798] transition-colors group"
             >
               {link.label}
-              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#C4A484] dark:bg-[#D6B798] group-hover:w-full transition-all duration-300" />
+              <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#C4A484] dark:bg-[#D6B798] group-hover:w-full transition-all duration-300" />
             </a>
           ))}
         </nav>

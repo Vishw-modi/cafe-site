@@ -22,7 +22,7 @@ export default function Home() {
   const [conciergeSelectedItem, setConciergeSelectedItem] = useState<MenuItem | null>(null);
 
   return (
-    <main className="relative min-h-screen bg-[#FDFBF7] text-[#2C221E] selection:bg-[#C4A484]/30">
+    <main className="relative min-h-screen bg-[#FDFBF7] dark:bg-[#14100E] text-[#1C1614] dark:text-[#F5EFE6] transition-colors duration-500 selection:bg-[#C4A484]/30">
       {/* 1. Desktop Custom Contextual Cursor */}
       <CustomCursor />
 

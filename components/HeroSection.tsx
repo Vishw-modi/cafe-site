@@ -44,7 +44,7 @@ export function HeroSection({ onOpenReservation }: HeroSectionProps) {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F5EFE6] dark:bg-[#1E1815] border border-[#E8E2D8] dark:border-[#2E2420] text-[#8F9E8B] dark:text-[#A1B39C] text-xs uppercase tracking-[0.25em] font-medium mb-6"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2C221E] dark:bg-[#1E1815] text-[#FDFBF7] dark:text-[#A1B39C] text-xs uppercase tracking-[0.25em] font-semibold mb-6 shadow-xs border border-[#2C221E] dark:border-[#2E2420]"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#8F9E8B] dark:bg-[#A1B39C] animate-pulse" />
           {greeting} {siteConfig.tagline}
@@ -66,7 +66,7 @@ export function HeroSection({ onOpenReservation }: HeroSectionProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="max-w-xl mx-auto text-base sm:text-lg text-[#2C221E]/75 dark:text-[#F5EFE6]/75 leading-relaxed mb-10 font-sans"
+          className="max-w-xl mx-auto text-base sm:text-lg text-[#2C221E] dark:text-[#F5EFE6]/90 font-medium leading-relaxed mb-10 font-sans"
         >
           {siteConfig.description}
         </motion.p>
@@ -81,14 +81,14 @@ export function HeroSection({ onOpenReservation }: HeroSectionProps) {
           <a
             href="#menu"
             data-cursor="EXPLORE"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#2C221E] dark:bg-[#F5EFE6] text-[#FDFBF7] dark:text-[#2C221E] text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#C4A484] dark:hover:bg-[#D6B798] transition-all duration-300 shadow-md text-center"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#2C221E] dark:bg-[#F5EFE6] text-[#FDFBF7] dark:text-[#2C221E] text-xs uppercase tracking-[0.2em] font-semibold hover:bg-[#C4A484] dark:hover:bg-[#D6B798] transition-all duration-300 shadow-md text-center"
           >
             Explore the Menu
           </a>
           <a
             href="#craft"
             data-cursor="VIEW"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-transparent border border-[#2C221E]/30 dark:border-[#F5EFE6]/30 text-[#2C221E] dark:text-[#F5EFE6] text-xs uppercase tracking-[0.2em] font-medium hover:border-[#2C221E] dark:hover:border-white hover:bg-[#F5EFE6]/50 dark:hover:bg-[#1E1815]/50 transition-all duration-300 text-center"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-transparent border border-[#2C221E]/60 dark:border-[#F5EFE6]/60 text-[#2C221E] dark:text-[#F5EFE6] text-xs uppercase tracking-[0.2em] font-semibold hover:border-[#2C221E] dark:hover:border-white hover:bg-[#2C221E] hover:text-[#FDFBF7] dark:hover:bg-[#F5EFE6] dark:hover:text-[#2C221E] transition-all duration-300 text-center"
           >
             Discover the Craft
           </a>
