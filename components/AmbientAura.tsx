@@ -47,7 +47,7 @@ export function AmbientAura() {
           x: springX,
           y: springY,
         }}
-        className="absolute w-[450px] h-[450px] rounded-full bg-radial from-[#F5EFE6]/60 via-[#E8E2D8]/30 to-transparent blur-3xl opacity-70"
+        className="absolute w-[450px] h-[450px] rounded-full bg-radial from-[#F5EFE6]/60 dark:from-[#2B221E]/60 via-[#E8E2D8]/30 dark:via-[#1E1815]/30 to-transparent blur-3xl opacity-70"
       />
 
       {/* Touch Ripples for Mobile */}
