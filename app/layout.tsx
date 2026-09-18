@@ -17,6 +17,11 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "L'Aura — Slow Mornings. Beautifully Made.",
   description: "A luxury artisan coffee house and pastry sanctuary. Crafted with intention, served with calm.",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
