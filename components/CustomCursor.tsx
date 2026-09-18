@@ -71,15 +71,19 @@ export function CustomCursor() {
       ref={cursorRef}
       className="fixed top-0 left-0 pointer-events-none z-50 -translate-x-1/2 -translate-y-1/2 will-change-transform"
     >
-      <div
-        className={`rounded-full flex items-center justify-center transition-all duration-200 ${
-          isHovered
-            ? "w-16 h-16 bg-[#2C221E]/90 dark:bg-[#F5EFE6]/90 text-[#FDFBF7] dark:text-[#2C221E] backdrop-blur-xs text-[10px] uppercase tracking-widest font-semibold shadow-xl scale-100 opacity-100"
-            : "w-3.5 h-3.5 bg-[#C4A484]/80 dark:bg-[#D6B798]/80 border border-[#FDFBF7] dark:border-[#14100E] shadow-xs"
-        }`}
-      >
-        {isHovered && <span>{cursorText}</span>}
-      </div>
+      {cursorText ? (
+        <div className="px-3 py-1.5 rounded-full bg-[#2C221E]/95 dark:bg-[#F5EFE6]/95 text-[#FDFBF7] dark:text-[#2C221E] border border-white/10 dark:border-black/10 backdrop-blur-md text-[10px] uppercase tracking-widest font-semibold shadow-xl whitespace-nowrap transition-all duration-200 flex items-center justify-center">
+          {cursorText}
+        </div>
+      ) : (
+        <div
+          className={`rounded-full transition-all duration-200 ${
+            isHovered
+              ? "w-8 h-8 bg-[#C4A484]/20 dark:bg-[#D6B798]/20 border border-[#C4A484] dark:border-[#D6B798] scale-110"
+              : "w-3.5 h-3.5 bg-[#C4A484]/80 dark:bg-[#D6B798]/80 border border-[#FDFBF7] dark:border-[#14100E] shadow-xs"
+          }`}
+        />
+      )}
     </div>
   );
 }
