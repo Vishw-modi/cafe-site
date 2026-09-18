@@ -1,6 +1,6 @@
 "use client";
 
-import { CAFE_INFO } from "@/data/cafeData";
+import { siteConfig } from "@/config/site";
 import { MapPin, Phone, Clock, ArrowUpRight } from "lucide-react";
 
 interface ContactFooterProps {
@@ -28,6 +28,7 @@ export function ContactFooter({ onOpenReservation }: ContactFooterProps) {
 
           <button
             onClick={onOpenReservation}
+            data-cursor="RESERVE"
             className="px-8 py-3.5 rounded-full bg-[#C4A484] text-[#2C221E] text-xs uppercase tracking-[0.2em] font-semibold hover:bg-[#FDFBF7] transition-colors shadow-lg"
           >
             Reserve Table
@@ -42,9 +43,11 @@ export function ContactFooter({ onOpenReservation }: ContactFooterProps) {
               <MapPin className="w-4 h-4" />
               <span className="text-xs uppercase tracking-widest font-medium">Location</span>
             </div>
-            <p className="font-serif text-lg text-[#FDFBF7]">{CAFE_INFO.address}</p>
+            <p className="font-serif text-lg text-[#FDFBF7]">
+              {siteConfig.address.street}, {siteConfig.address.neighborhood}
+            </p>
             <a
-              href="https://maps.google.com"
+              href={siteConfig.social.mapsUrl}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-1 text-xs text-[#C4A484] hover:underline"
@@ -60,10 +63,10 @@ export function ContactFooter({ onOpenReservation }: ContactFooterProps) {
               <Clock className="w-4 h-4" />
               <span className="text-xs uppercase tracking-widest font-medium">Hours</span>
             </div>
-            {CAFE_INFO.hours.map((h) => (
+            {siteConfig.hours.map((h) => (
               <div key={h.days} className="text-[#E8E2D8]/90">
                 <span className="block text-xs font-semibold">{h.days}</span>
-                <span className="font-serif text-base">{h.time}</span>
+                <span className="font-serif text-base">{h.formatted}</span>
               </div>
             ))}
           </div>
@@ -74,9 +77,9 @@ export function ContactFooter({ onOpenReservation }: ContactFooterProps) {
               <Phone className="w-4 h-4" />
               <span className="text-xs uppercase tracking-widest font-medium">Contact</span>
             </div>
-            <p className="font-serif text-lg text-[#FDFBF7]">{CAFE_INFO.phone}</p>
+            <p className="font-serif text-lg text-[#FDFBF7]">{siteConfig.phone}</p>
             <a
-              href={`https://instagram.com/${CAFE_INFO.instagram.replace("@", "")}`}
+              href={siteConfig.social.instagramUrl}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 text-xs text-[#E8E2D8] hover:text-[#C4A484] transition-colors pt-1"
@@ -86,17 +89,28 @@ export function ContactFooter({ onOpenReservation }: ContactFooterProps) {
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                 <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
               </svg>
-              <span>{CAFE_INFO.instagram}</span>
+              <span>{siteConfig.social.instagram}</span>
             </a>
           </div>
         </div>
 
-        {/* Bottom Copyright */}
-        <div className="flex flex-col sm:flex-row justify-between items-center pt-8 text-xs text-[#E8E2D8]/50">
-          <p>© {new Date().getFullYear()} L'Aura Artisan Cafe. All rights reserved.</p>
-          <p className="font-serif italic mt-2 sm:mt-0">Crafted with intention & calm.</p>
+        {/* Bottom Copyright & Subtle Developer Credit */}
+        <div className="flex flex-col sm:flex-row justify-between items-center pt-8 text-xs text-[#E8E2D8]/50 gap-2">
+          <p>© {new Date().getFullYear()} {siteConfig.legalName}. All rights reserved.</p>
+          <p className="font-sans">
+            Digital experience by{" "}
+            <a
+              href={siteConfig.creator.url}
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#C4A484] hover:underline font-medium"
+            >
+              {siteConfig.creator.name}
+            </a>
+          </p>
         </div>
       </div>
     </footer>
   );
 }
+

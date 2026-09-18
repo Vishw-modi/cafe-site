@@ -1,9 +1,9 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { ArrowDown } from "lucide-react";
-import { CAFE_INFO } from "@/data/cafeData";
+import { siteConfig } from "@/config/site";
 
 interface HeroSectionProps {
   onOpenReservation: () => void;
@@ -11,13 +11,24 @@ interface HeroSectionProps {
 
 export function HeroSection({ onOpenReservation }: HeroSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [greeting, setGreeting] = useState<string>("Slow mornings.");
+
+  useEffect(() => {
+    const hour = new Date().getHours();
+    if (hour >= 5 && hour < 12) {
+      setGreeting("Good morning.");
+    } else if (hour >= 12 && hour < 17) {
+      setGreeting("Take your time.");
+    } else {
+      setGreeting("Stay a little longer.");
+    }
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
 
-  // Slow, serene image scale and subtle fade as user scrolls
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
   const imageOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0.3]);
   const textY = useTransform(scrollYProgress, [0, 1], [0, 60]);
@@ -28,7 +39,7 @@ export function HeroSection({ onOpenReservation }: HeroSectionProps) {
       className="relative min-h-screen pt-32 pb-20 flex flex-col justify-center items-center px-6 overflow-hidden"
     >
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        {/* Subtitle Badge */}
+        {/* Subtitle Badge with Time-Aware Greeting */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -36,7 +47,7 @@ export function HeroSection({ onOpenReservation }: HeroSectionProps) {
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F5EFE6] border border-[#E8E2D8] text-[#8F9E8B] text-xs uppercase tracking-[0.25em] font-medium mb-6"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#8F9E8B] animate-pulse" />
-          {CAFE_INFO.tagline}
+          {greeting} {siteConfig.tagline}
         </motion.div>
 
         {/* Editorial Heading */}
@@ -57,7 +68,7 @@ export function HeroSection({ onOpenReservation }: HeroSectionProps) {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="max-w-xl mx-auto text-base sm:text-lg text-[#2C221E]/75 leading-relaxed mb-10 font-sans"
         >
-          {CAFE_INFO.heroDescription}
+          {siteConfig.description}
         </motion.p>
 
         {/* CTAs */}

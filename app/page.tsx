@@ -6,45 +6,72 @@ import { AmbientAura } from "@/components/AmbientAura";
 import { HeaderNav } from "@/components/HeaderNav";
 import { HeroSection } from "@/components/HeroSection";
 import { CraftSection } from "@/components/CraftSection";
+import { SpaceSection } from "@/components/SpaceSection";
 import { MenuSection } from "@/components/MenuSection";
 import { ReviewsSection } from "@/components/ReviewsSection";
 import { ContactFooter } from "@/components/ContactFooter";
 import { ReservationDrawer } from "@/components/ReservationDrawer";
 import { MobileBottomNav } from "@/components/MobileBottomNav";
+import { DigitalConcierge } from "@/components/DigitalConcierge";
+import { CustomCursor } from "@/components/CustomCursor";
+import { ItemDetailModal } from "@/components/ItemDetailModal";
+import { MenuItem } from "@/data/menu";
 
 export default function Home() {
   const [reservationOpen, setReservationOpen] = useState(false);
+  const [conciergeSelectedItem, setConciergeSelectedItem] = useState<MenuItem | null>(null);
 
   return (
     <main className="relative min-h-screen bg-[#FDFBF7] text-[#2C221E] selection:bg-[#C4A484]/30">
-      {/* 1. Cinematic Intro Sequence (1.5-2.5s) */}
+      {/* 1. Desktop Custom Contextual Cursor */}
+      <CustomCursor />
+
+      {/* 2. Cinematic Entrance Sequence */}
       <CinematicIntro />
 
-      {/* 2. Restrained Interactive Background Aura */}
+      {/* 3. Restrained Interactive Background Aura */}
       <AmbientAura />
 
-      {/* 3. Luxury Minimal Header Nav */}
+      {/* 4. Luxury Minimal Header Nav */}
       <HeaderNav onOpenReservation={() => setReservationOpen(true)} />
 
-      {/* 4. Minimal Hero Section */}
+      {/* 5. Minimal Hero Section */}
       <HeroSection onOpenReservation={() => setReservationOpen(true)} />
 
-      {/* 5. The Craft / Coffee Storytelling */}
+      {/* 6. The Craft / Coffee Storytelling */}
       <CraftSection />
 
-      {/* 6. Editorial Menu Experience */}
+      {/* 7. The Physical Space / Atmosphere */}
+      <SpaceSection />
+
+      {/* 8. Editorial Menu Experience */}
       <MenuSection onOpenReservation={() => setReservationOpen(true)} />
 
-      {/* 7. Editorial Testimonials */}
+      {/* 9. Editorial Testimonials */}
       <ReviewsSection />
 
-      {/* 8. Peaceful Closing Footer */}
+      {/* 10. Peaceful Closing Footer */}
       <ContactFooter onOpenReservation={() => setReservationOpen(true)} />
 
-      {/* 9. Mobile Bottom Floating Pill Nav */}
+      {/* 11. Mobile Bottom Floating Pill Nav */}
       <MobileBottomNav onOpenReservation={() => setReservationOpen(true)} />
 
-      {/* 10. Table Reservation Drawer */}
+      {/* 12. Digital Concierge Guide */}
+      <DigitalConcierge onSelectItem={(item) => setConciergeSelectedItem(item)} />
+
+      {/* 13. Concierge Modal / Detail Item View */}
+      {conciergeSelectedItem && (
+        <ItemDetailModal
+          item={conciergeSelectedItem}
+          onClose={() => setConciergeSelectedItem(null)}
+          onOpenReservation={() => {
+            setConciergeSelectedItem(null);
+            setReservationOpen(true);
+          }}
+        />
+      )}
+
+      {/* 14. Table Reservation Drawer */}
       <ReservationDrawer
         isOpen={reservationOpen}
         onClose={() => setReservationOpen(false)}
